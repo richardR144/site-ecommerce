@@ -9,19 +9,26 @@
 </head>
 <body>
 
-<p><?php echo $message; ?></p>
+<main>
+    <h1>Site ecommerce</h1>
 
-<p>Commande numéro : <?php echo $order->getId(); ?></p>
 
-<p>Produits : </p>
+    <?php if ($message)  { ?>
 
-<ul>
-    <?php foreach ($order->getProducts() as $product) { ?>
-
-        <li><?php echo $product; ?></li>
+        <h2><?php echo $message; ?></h2>
 
     <?php } ?>
-</ul>
 
+
+    <form method="POST">
+
+        <label>Nom</label>
+        <input type="text" name="customerName">
+
+        <button type="submit">Créer une commande</button>
+
+    </form>
+
+</main>
 </body>
 </html>
