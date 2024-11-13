@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 require_once('../controller/OrderController.php');
 require_once('../controller/ErrorController.php');
 

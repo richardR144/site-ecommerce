@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 require_once('../model/Order.php');
 require_once('../model/OrderRepository.php');
 require_once('../view/partial/_header.php');
@@ -91,7 +91,7 @@ class OrderController
                 }
             }
         }
-        require_once('../view/set-shipping-address-view.php');
+        require_once('../view/set-shipping-adress-view.php');
     }
 
             public function updateProduct($id)
@@ -130,6 +130,7 @@ class OrderController
                 $message = $exception->getMessage();
             }
         }
+        require_once('../view/pay-view.php');
     }
 
 

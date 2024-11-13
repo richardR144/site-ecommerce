@@ -21,7 +21,7 @@ class Order
         $this->id = uniqid();
     }
 
-    public function addProduct()
+    public function addProduct($addProduct)
     {
         if ($this->status === "cart") {
             $this->products[] = "Pringles";
@@ -31,7 +31,7 @@ class Order
         }
     }
 
-    public function removeProduct()
+    public function removeProduct($removeProduct)
     {
         if ($this->status === "cart" && !empty($this->products)) {
             array_pop($this->products);
@@ -51,7 +51,7 @@ class Order
 
 
 
-    public function pay()
+    public function pay($pay)
     {
         if ($this->status === "shippingAddressSet" && !empty($this->products)) {
             $this->status = "paid";
@@ -62,7 +62,7 @@ class Order
     }
 
 
-    public function ship()
+    public function ship($ship)
     {
         if ($this->status === 'paid') {
             $this->status = "shipped";
@@ -77,15 +77,15 @@ class Order
     // je peux créer une méthode public qui retourne
     // la valeur de la propriété, sans me permettre de la modifier
 
-    public function getId() {
+    public function getId($getId) {
         return $this->id;
     }
 
-    public function getProducts() {
+    public function getProducts($getProducts) {
         return $this->products;
     }
 
-    public function getAddress() {
+    public function getAddress($getAddress) {
         return $this->shippingAddress;
     }
 }
