@@ -76,16 +76,16 @@ class OrderController
         $order = $orderRepository->findOrder();
 
         $message = null;
-
+            //je verifie et récupère les données de la requête POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            //si la clé shipping Adress est bien Post
             if (key_exists('shippingAddress', $_POST)) {
-
+            //il applique cette requête
                 try {
                     $order->setShippingAddress($_POST['shippingAddress']);
-
+            //avec un message et que l'exception n'est pas éxécuté
                     $message = "Adresse ajoutée";
-
+            //sinon il éxecute l'exeption
                 } catch (Exception $exception) {
                     $message = $exception->getMessage();
                 }
@@ -93,7 +93,6 @@ class OrderController
         }
         require_once('../view/set-shipping-address-view.php');
     }
-
 
             public function updateProduct($id)
             {
@@ -108,7 +107,30 @@ class OrderController
                 }
             }
 
+    public function Pay()
+    {
+        $message = null;
 
+        //1- je récupère mon order stockée en session avec findOrder depuis le OrderRepo
+        $orderRepository = new OrderRepository();
+        $order = $orderRepository->findOrder();
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            try {
+
+                $order->pay();
+                // je stocke la nouvelle instance de mon repository
+                $orderRepository = new OrderRepository();
+                $orderRepository->persistOrder($order);
+
+                $message = "Vous avez bien payé";
+
+            } catch (Exception $exception) {
+                $message = $exception->getMessage();
+            }
+        }
+    }
 
 
     public function deleteProduct($id) {

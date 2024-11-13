@@ -51,13 +51,6 @@ class Order
 
 
 
-    #[Route('/blog/{id}', 'blog_article', ['id' => '\d+'], ['id' => 1])]
-    public function show($id)
-    {
-        // Code pour afficher l'article
-    }
-
-
     public function pay()
     {
         if ($this->status === "shippingAddressSet" && !empty($this->products)) {
@@ -67,8 +60,6 @@ class Order
         }
 
     }
-
-    // private or public
 
 
     public function ship()

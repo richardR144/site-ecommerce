@@ -1,3 +1,3 @@
 <footer>
-    <p>Copyright</p>
+    <p><a href="/copy">Copyright</a></p>
 </footer>
